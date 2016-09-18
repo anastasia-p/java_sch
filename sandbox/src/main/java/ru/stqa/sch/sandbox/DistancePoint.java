@@ -3,12 +3,8 @@ package ru.stqa.sch.sandbox;
 public class DistancePoint {
 
   public static void main(String[] args) {
-    Point p1 = new Point();
-    p1.xCoord = 1;
-    p1.yCoord = 1;
-    Point p2 = new Point();
-    p2.xCoord = 1;
-    p2.yCoord = 2;
+    Point p1 = new Point(1,1);
+    Point p2 = new Point(1,2);
 
     System.out.println("Расстояние между точками а(" + p1.xCoord + "," + p1.yCoord + ") и b(" + p2.xCoord + ","
             + p2.yCoord + ") равно " + distance(p1, p2));
