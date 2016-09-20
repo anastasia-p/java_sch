@@ -8,19 +8,19 @@ public class CreationTests extends TestBase {
 
     @Test
     public void testGroupCreation() {
-        app.gotoGroupPage();
-        app.initGroupCreation();
-        app.fillGroupForm(new GroupData("test1", "header1", "footer1"));
-        app.submitGroupCreation();
-        app.returnToGroupPage();
+        app.getNavigationHelper().gotoGroupPage();
+        app.getGroupHelper().initGroupCreation();
+        app.getGroupHelper().fillGroupForm(new GroupData("test1", "header1", "footer1"));
+        app.getGroupHelper().submitGroupCreation();
+        app.getGroupHelper().returnToGroupPage();
     }
 
     @Test
     public void testContactCreation() {
-        app.gotoContactPage();
-        app.fillContactForm(new ContactData("firstName2", "lastName2", "address2", "123123", "test2@test.ru"));
-        app.subvitContactCreation();
-        app.returnToHomePage();
+        app.getNavigationHelper().gotoContactPage();
+        app.getContactHelper().fillContactForm(new ContactData("firstName2", "lastName2", "address2", "123123", "test2@test.ru"));
+        app.getContactHelper().subvitContactCreation();
+        app.getNavigationHelper().gotoHomePage();
     }
 
 }
