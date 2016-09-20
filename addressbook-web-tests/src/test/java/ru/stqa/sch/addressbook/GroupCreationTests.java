@@ -39,6 +39,44 @@ public class GroupCreationTests {
         returnToGroupPage();
     }
 
+    @Test
+    public void testContactCreationTests() {
+        gotoContactPage();
+        fillContactForm(new ContactData("firstName2", "lastName2", "address2", "123123", "test2@test.ru"));
+        subvitContactCreation();
+        returnToHomePage();
+    }
+
+    private void returnToHomePage() {
+        wd.findElement(By.linkText("home")).click();
+    }
+
+    private void subvitContactCreation() {
+        wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
+    }
+
+    private void fillContactForm(ContactData contactData) {
+        wd.findElement(By.name("firstname")).click();
+        wd.findElement(By.name("firstname")).clear();
+        wd.findElement(By.name("firstname")).sendKeys(contactData.getFirstname());
+        wd.findElement(By.name("lastname")).click();
+        wd.findElement(By.name("lastname")).clear();
+        wd.findElement(By.name("lastname")).sendKeys(contactData.getLastname());
+        wd.findElement(By.name("address")).click();
+        wd.findElement(By.name("address")).clear();
+        wd.findElement(By.name("address")).sendKeys(contactData.getAddress());
+        wd.findElement(By.name("mobile")).click();
+        wd.findElement(By.name("mobile")).clear();
+        wd.findElement(By.name("mobile")).sendKeys(contactData.getMobile());
+        wd.findElement(By.name("email")).click();
+        wd.findElement(By.name("email")).clear();
+        wd.findElement(By.name("email")).sendKeys(contactData.getEmail());
+    }
+
+    private void gotoContactPage() {
+        wd.findElement(By.linkText("add new")).click();
+    }
+
     private void returnToGroupPage() {
         wd.findElement(By.linkText("group page")).click();
     }
