@@ -103,4 +103,12 @@ public class TestBase {
     protected void gotoGroupPage() {
         wd.findElement(By.linkText("groups")).click();
     }
+
+    protected void deleteSelectedGroups() {
+        wd.findElement(By.name("delete")).click();
+    }
+
+    protected void selectGroup() {
+        wd.findElement(By.name("selected[]")).click();
+    }
 }
