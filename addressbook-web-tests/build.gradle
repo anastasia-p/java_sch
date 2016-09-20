@@ -6,4 +6,5 @@ repositories {
 
 dependencies {
     compile 'org.testng:testng:6.9.10'
+    compile 'com.applitools:eyes-selenium-java-jersey1_17-sf2_51_0:2.51'
 }
