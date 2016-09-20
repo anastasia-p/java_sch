@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.*;
 
-public class GroupCreationTests {
+public class CreationTests {
     FirefoxDriver wd;
 
     @BeforeMethod
@@ -31,7 +31,7 @@ public class GroupCreationTests {
     }
 
     @Test
-    public void testGroupCreationTests() {
+    public void testGroupCreation() {
         gotoGroupPage();
         initGroupCreation();
         fillGroupForm(new GroupData("test1", "header1", "footer1"));
@@ -40,7 +40,7 @@ public class GroupCreationTests {
     }
 
     @Test
-    public void testContactCreationTests() {
+    public void testContactCreation() {
         gotoContactPage();
         fillContactForm(new ContactData("firstName2", "lastName2", "address2", "123123", "test2@test.ru"));
         subvitContactCreation();
