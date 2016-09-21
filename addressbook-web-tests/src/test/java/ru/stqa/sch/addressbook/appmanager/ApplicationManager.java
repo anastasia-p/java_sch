@@ -14,16 +14,18 @@ public class ApplicationManager {
     private SessionHelper sessionHelper;
     private NavigationHelper navigationHelper;
     private GroupHelper groupHelper;
+    private HelperBase helperBase;
 
     public void init() {
         wd = new FirefoxDriver();
         wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
         wd.get("http://localhost/addressbook/");
-        sessionHelper = new SessionHelper(wd);
         groupHelper = new GroupHelper(wd);
         navigationHelper = new NavigationHelper(wd);
         contactHelper = new ContactHelper(wd);
+        sessionHelper = new SessionHelper(wd);
         sessionHelper.login("admin", "secret");
+        helperBase = new HelperBase(wd);
     }
 
 
@@ -41,5 +43,9 @@ public class ApplicationManager {
 
     public ContactHelper getContactHelper() {
         return contactHelper;
+    }
+
+    public HelperBase getHelperBase() {
+        return helperBase;
     }
 }
