@@ -7,8 +7,9 @@ import ru.stqa.sch.addressbook.model.GroupData;
 public class ModificationTests extends TestBase{
 
     @Test
-    public void testGroupModificztion() {
+    public void testGroupModification() {
         app.getNavigationHelper().gotoGroupPage();
+        app.getGroupHelper().checkGroup(new GroupData("test1", null, null));
         app.getGroupHelper().selectGroup();
         app.getGroupHelper().initGroupModification();
         app.getGroupHelper().fillGroupForm(new GroupData("test1", "header2", "footer2"));
@@ -18,6 +19,9 @@ public class ModificationTests extends TestBase{
 
     @Test
     public void testContactModification() {
+        app.getGroupHelper().checkGroup(new GroupData("test1", null, null));
+        app.getContactHelper().checkContact(new ContactData("firstName2", "lastName2", "address2",
+                "123123", "test2@test.ru", "test1"), true);
         app.getNavigationHelper().gotoHomePage();
         app.getContactHelper().selectContact();
         app.getContactHelper().initContactModification();
