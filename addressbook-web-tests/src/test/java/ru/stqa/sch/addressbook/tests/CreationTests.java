@@ -18,7 +18,7 @@ public class CreationTests extends TestBase {
     @Test
     public void testContactCreation() {
         app.getNavigationHelper().gotoContactPage();
-        app.getContactHelper().fillContactForm(new ContactData("firstName2", "lastName2", "address2", "123123", "test2@test.ru"));
+        app.getContactHelper().fillContactForm(new ContactData("firstName2", "lastName2", "address2", "123123", "test2@test.ru", "test1"), true);
         app.getContactHelper().subvitContactCreation();
         app.getNavigationHelper().gotoHomePage();
     }
