@@ -8,8 +8,11 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.sch.addressbook.model.ContactData;
+import ru.stqa.sch.addressbook.model.GroupData;
 
 public class ContactHelper extends HelperBase{
+
+    private NavigationHelper navigationHelper;
 
     public ContactHelper(WebDriver wd) {
         super (wd);
@@ -44,8 +47,27 @@ public class ContactHelper extends HelperBase{
     public void initContactModification() {
         click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
     }
+
     public void submitContactModification() {
         click(By.name("update"));
     }
 
+    public void createContact(ContactData contact, boolean creation) {
+        navigationHelper = new NavigationHelper(wd);
+        navigationHelper.gotoContactPage();
+        fillContactForm(contact, creation);
+        subvitContactCreation();
+    }
+
+    public boolean isThereAContact() {
+        return isElementPresence(By.name("selected[]"));
+    }
+
+    public void checkContact(ContactData contact, boolean creation) {
+        navigationHelper = new NavigationHelper(wd);
+        navigationHelper.gotoHomePage();
+        if (! isThereAContact()) {
+            createContact(contact, creation);
+        }
+    }
 }

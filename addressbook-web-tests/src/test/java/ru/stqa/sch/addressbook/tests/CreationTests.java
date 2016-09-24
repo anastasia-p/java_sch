@@ -9,17 +9,14 @@ public class CreationTests extends TestBase {
     @Test
     public void testGroupCreation() {
         app.getNavigationHelper().gotoGroupPage();
-        app.getGroupHelper().initGroupCreation();
-        app.getGroupHelper().fillGroupForm(new GroupData("test1", null, null));
-        app.getGroupHelper().submitGroupCreation();
-        app.getGroupHelper().returnToGroupPage();
+        app.getGroupHelper().createGroup(new GroupData("test1", null, null));
     }
 
     @Test
     public void testContactCreation() {
         app.getNavigationHelper().gotoContactPage();
-        app.getContactHelper().fillContactForm(new ContactData("firstName2", "lastName2", "address2", "123123", "test2@test.ru", "test1"), true);
-        app.getContactHelper().subvitContactCreation();
+        app.getContactHelper().createContact(new ContactData("firstName2", "lastName2", "address2",
+                "123123", "test2@test.ru", "test1"), true);
         app.getNavigationHelper().gotoHomePage();
     }
 

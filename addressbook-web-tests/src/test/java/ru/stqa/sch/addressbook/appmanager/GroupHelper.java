@@ -8,6 +8,8 @@ import ru.stqa.sch.addressbook.model.GroupData;
 
 public class GroupHelper extends HelperBase {
 
+    private NavigationHelper navigationHelper;
+
     public GroupHelper(WebDriver wd) {
         super(wd);
     }
@@ -45,4 +47,24 @@ public class GroupHelper extends HelperBase {
     public void submitGroupModification() {
         click(By.name("update"));
     }
+
+    public void createGroup(GroupData group) {
+        initGroupCreation();
+        fillGroupForm(group);
+        submitGroupCreation();
+        returnToGroupPage();
+    }
+
+    public boolean isThereAGroup() {
+        return isElementPresence(By.name("selected[]"));
+    }
+
+    public void checkGroup(GroupData group) {
+        navigationHelper = new NavigationHelper(wd);
+        navigationHelper.gotoGroupPage();
+        if (! isThereAGroup()) {
+            createGroup(group);
+        }
+    }
+
 }
