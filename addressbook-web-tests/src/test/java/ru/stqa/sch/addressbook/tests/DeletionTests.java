@@ -10,7 +10,7 @@ import java.util.List;
 
 public class DeletionTests extends TestBase{
 
-    @Test
+    @Test (enabled = false)
     public void testGroupDeletion() {
         app.getNavigationHelper().gotoGroupPage();
         app.getGroupHelper().checkGroup(new GroupData("test1", null, null));
@@ -20,6 +20,9 @@ public class DeletionTests extends TestBase{
         app.getGroupHelper().returnToGroupPage();
         List<GroupData> after = app.getGroupHelper().getGroupList();
         Assert.assertEquals(after.size(), before.size() - 1);
+
+        before.remove(before.size() - 1);
+        Assert.assertEquals(before, after);
     }
 
 
@@ -36,6 +39,9 @@ public class DeletionTests extends TestBase{
         app.getNavigationHelper().gotoHomePage();
         List<ContactData> after = app.getContactHelper().getContactList();
         Assert.assertEquals(after.size(), before.size() - 1);
+
+        before.remove(before.size() - 1);
+        Assert.assertEquals(before, after);
     }
 
 }
