@@ -12,7 +12,7 @@ public class ModificationTests extends TestBase{
         app.getNavigationHelper().gotoGroupPage();
         app.getGroupHelper().checkGroup(new GroupData("test1", null, null));
         int before = app.getGroupHelper().getGroupCount();
-        app.getGroupHelper().selectGroup();
+        app.getGroupHelper().selectGroup(before - 1);
         app.getGroupHelper().initGroupModification();
         app.getGroupHelper().fillGroupForm(new GroupData("test1", "header2", "footer2"));
         app.getGroupHelper().submitGroupModification();
@@ -28,7 +28,7 @@ public class ModificationTests extends TestBase{
                 "123123", "test2@test.ru", "test1"), true);
         app.getNavigationHelper().gotoHomePage();
         int before = app.getContactHelper().getContactCount();
-        app.getContactHelper().selectContact();
+        app.getContactHelper().selectContact(before - 1);
         app.getContactHelper().initContactModification();
         app.getContactHelper().fillContactForm(new ContactData("firstName3", "lastName3", "address3", "234234",
                 "test3@test.ru", null), false);

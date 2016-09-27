@@ -13,7 +13,7 @@ public class DeletionTests extends TestBase{
         app.getNavigationHelper().gotoGroupPage();
         app.getGroupHelper().checkGroup(new GroupData("test1", null, null));
         int before = app.getGroupHelper().getGroupCount();
-        app.getGroupHelper().selectGroup();
+        app.getGroupHelper().selectGroup(before - 1);
         app.getGroupHelper().deleteSelectedGroups();
         app.getGroupHelper().returnToGroupPage();
         int after = app.getGroupHelper().getGroupCount();
@@ -28,7 +28,7 @@ public class DeletionTests extends TestBase{
                 "123123", "test2@test.ru", "test1"), true);
         app.getNavigationHelper().gotoHomePage();
         int before = app.getContactHelper().getContactCount();
-        app.getContactHelper().selectContact();
+        app.getContactHelper().selectContact(before - 1);
         app.getContactHelper().deleteSelectedContact();
         app.getHelperBase().alert();
         app.getNavigationHelper().gotoHomePage();
