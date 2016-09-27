@@ -1,5 +1,6 @@
 package ru.stqa.sch.addressbook.tests;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.sch.addressbook.appmanager.HelperBase;
 import ru.stqa.sch.addressbook.model.ContactData;
@@ -11,9 +12,12 @@ public class DeletionTests extends TestBase{
     public void testGroupDeletion() {
         app.getNavigationHelper().gotoGroupPage();
         app.getGroupHelper().checkGroup(new GroupData("test1", null, null));
+        int before = app.getGroupHelper().getGroupCount();
         app.getGroupHelper().selectGroup();
         app.getGroupHelper().deleteSelectedGroups();
         app.getGroupHelper().returnToGroupPage();
+        int after = app.getGroupHelper().getGroupCount();
+        Assert.assertEquals(after, before - 1);
     }
 
 
