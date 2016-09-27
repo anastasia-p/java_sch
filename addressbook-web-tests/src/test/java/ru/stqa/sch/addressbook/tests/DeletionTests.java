@@ -27,10 +27,13 @@ public class DeletionTests extends TestBase{
         app.getContactHelper().checkContact(new ContactData("firstName2", "lastName2", "address2",
                 "123123", "test2@test.ru", "test1"), true);
         app.getNavigationHelper().gotoHomePage();
+        int before = app.getContactHelper().getContactCount();
         app.getContactHelper().selectContact();
         app.getContactHelper().deleteSelectedContact();
         app.getHelperBase().alert();
         app.getNavigationHelper().gotoHomePage();
+        int after = app.getContactHelper().getContactCount();
+        Assert.assertEquals(after, before - 1);
     }
 
 }

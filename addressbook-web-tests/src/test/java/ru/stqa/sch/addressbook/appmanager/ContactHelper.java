@@ -12,7 +12,7 @@ import ru.stqa.sch.addressbook.model.GroupData;
 
 public class ContactHelper extends HelperBase{
 
-    private NavigationHelper navigationHelper;
+    public NavigationHelper navigationHelper;
 
     public ContactHelper(WebDriver wd) {
         super (wd);
@@ -69,5 +69,9 @@ public class ContactHelper extends HelperBase{
         if (! isThereAContact()) {
             createContact(contact, creation);
         }
+    }
+
+    public int getContactCount() {
+        return elementCount(By.name("selected[]"));
     }
 }

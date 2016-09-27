@@ -1,5 +1,6 @@
 package ru.stqa.sch.addressbook.tests;
 
+import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.sch.addressbook.model.ContactData;
@@ -18,10 +19,14 @@ public class CreationTests extends TestBase {
 
     @Test
     public void testContactCreation() {
+        app.getNavigationHelper().gotoHomePage();
+        int before = app.getContactHelper().getContactCount();
         app.getNavigationHelper().gotoContactPage();
         app.getContactHelper().createContact(new ContactData("firstName2", "lastName2", "address2",
                 "123123", "test2@test.ru", "test1"), true);
         app.getNavigationHelper().gotoHomePage();
+        int after = app.getContactHelper().getContactCount();
+        Assert.assertEquals(after, before + 1);
     }
 
 }

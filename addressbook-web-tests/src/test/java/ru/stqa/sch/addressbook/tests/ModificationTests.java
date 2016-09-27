@@ -27,11 +27,14 @@ public class ModificationTests extends TestBase{
         app.getContactHelper().checkContact(new ContactData("firstName2", "lastName2", "address2",
                 "123123", "test2@test.ru", "test1"), true);
         app.getNavigationHelper().gotoHomePage();
+        int before = app.getContactHelper().getContactCount();
         app.getContactHelper().selectContact();
         app.getContactHelper().initContactModification();
         app.getContactHelper().fillContactForm(new ContactData("firstName3", "lastName3", "address3", "234234",
                 "test3@test.ru", null), false);
         app.getContactHelper().submitContactModification();
         app.getNavigationHelper().gotoHomePage();
+        int after = app.getContactHelper().getContactCount();
+        Assert.assertEquals(after, before);
     }
 }
