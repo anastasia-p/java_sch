@@ -4,7 +4,6 @@ package ru.stqa.sch.addressbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import ru.stqa.sch.addressbook.model.GroupData;
 
 import java.util.ArrayList;
@@ -52,7 +51,7 @@ public class GroupHelper extends HelperBase {
         click(By.name("update"));
     }
 
-    public void createGroup(GroupData group) {
+    public void create(GroupData group) {
         initGroupCreation();
         fillGroupForm(group);
         submitGroupCreation();
@@ -65,24 +64,31 @@ public class GroupHelper extends HelperBase {
 
     public void checkGroup(GroupData group) {
         navigationHelper = new NavigationHelper(wd);
-        navigationHelper.gotoGroupPage();
+        navigationHelper.groupPage();
         if (! isThereAGroup()) {
-            createGroup(group);
+            create(group);
         }
+    }
+
+    public void modify(int index, GroupData group) {
+        selectGroup(index);
+        initGroupModification();
+        fillGroupForm(group);
+        submitGroupModification();
+        returnToGroupPage();
     }
 
     public int getGroupCount() {
         return elementCount(By.name("selected[]"));
     }
 
-    public List<GroupData> getGroupList() {
+    public List<GroupData> list() {
         List<GroupData> groups = new ArrayList<GroupData>();
         List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
         for (WebElement element : elements) {
             String name = element.getText();
             int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-            GroupData group = new GroupData(id, name, null, null);
-            groups.add(group);
+            groups.add(new GroupData().withId(id).withName(name));
         }
         return groups;
     }

@@ -6,18 +6,17 @@ import ru.stqa.sch.addressbook.model.ContactData;
 import ru.stqa.sch.addressbook.model.GroupData;
 
 import java.util.Comparator;
-import java.util.HashSet;
 import java.util.List;
 
 public class CreationTests extends TestBase {
 
   @Test
   public void testGroupCreation() {
-    app.getNavigationHelper().gotoGroupPage();
-    List<GroupData> before = app.getGroupHelper().getGroupList();
-    GroupData group = new GroupData("test2", null, null);
-    app.getGroupHelper().createGroup(group);
-    List<GroupData> after = app.getGroupHelper().getGroupList();
+    app.goTo().groupPage();
+    List<GroupData> before = app.group().list();
+    GroupData group = new GroupData().withName("test1");
+    app.group().create(group);
+    List<GroupData> after = app.group().list();
     Assert.assertEquals(after.size(), before.size() + 1);
 
     before.add(group);
@@ -29,14 +28,15 @@ public class CreationTests extends TestBase {
 
   @Test
   public void testContactCreation() {
-    app.getGroupHelper().checkGroup(new GroupData("test2", null, null));
-    app.getNavigationHelper().gotoHomePage();
+    app.group().checkGroup(new GroupData().withName("test1"));
+    app.goTo().gotoHomePage();
     List<ContactData> before = app.getContactHelper().getContactList();
-    app.getNavigationHelper().gotoContactPage();
-    ContactData contact = new ContactData("firstName2", "lastName2", "address2",
-            "123123", "test2@test.ru", "test2");
+    app.goTo().gotoContactPage();
+    ContactData contact = new ContactData()
+            .withFirstname("firstName2").withLastname("lastName2").withAddress("address2")
+            .withMobile("123123").withEmail("test2@test.ru").withGroup("test1");
     app.getContactHelper().createContact(contact, true);
-    app.getNavigationHelper().gotoHomePage();
+    app.goTo().gotoHomePage();
     List<ContactData> after = app.getContactHelper().getContactList();
     Assert.assertEquals(after.size(), before.size() + 1);
 
