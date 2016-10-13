@@ -29,11 +29,12 @@ public class CreationTests extends TestBase {
 
   @Test
   public void testContactCreation() {
+    app.getGroupHelper().checkGroup(new GroupData("test2", null, null));
     app.getNavigationHelper().gotoHomePage();
     List<ContactData> before = app.getContactHelper().getContactList();
     app.getNavigationHelper().gotoContactPage();
     ContactData contact = new ContactData("firstName2", "lastName2", "address2",
-            "123123", "test2@test.ru", "test1");
+            "123123", "test2@test.ru", "test2");
     app.getContactHelper().createContact(contact, true);
     app.getNavigationHelper().gotoHomePage();
     List<ContactData> after = app.getContactHelper().getContactList();
@@ -43,6 +44,7 @@ public class CreationTests extends TestBase {
     Comparator<? super ContactData> byId = (c1, c2) -> Integer.compare(c1.getId(), c2.getId());
     before.sort(byId);
     after.sort(byId);
-    Assert.assertEquals(before, after);  }
+    Assert.assertEquals(before, after);
+  }
 
 }
