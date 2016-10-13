@@ -15,7 +15,7 @@ public class ModificationTests extends TestBase{
     @Test
     public void testGroupModification() {
         app.getNavigationHelper().gotoGroupPage();
-        app.getGroupHelper().checkGroup(new GroupData("test1", null, null));
+        app.getGroupHelper().checkGroup(new GroupData("test2", null, null));
         List<GroupData> before = app.getGroupHelper().getGroupList();
         app.getGroupHelper().selectGroup(before.size() - 1);
         app.getGroupHelper().initGroupModification();
@@ -51,8 +51,11 @@ public class ModificationTests extends TestBase{
         List<ContactData> after = app.getContactHelper().getContactList();
         Assert.assertEquals(after.size(), before.size());
 
-        before.remove(before.size() - 1);
-        before.add(contact);
-        Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after));
+      before.remove(before.size() - 1);
+      before.add(contact);
+      Comparator<? super ContactData> byId = (c1, c2) -> Integer.compare(c1.getId(), c2.getId());
+      before.sort(byId);
+      after.sort(byId);
+      Assert.assertEquals(before, after);
     }
 }
