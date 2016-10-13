@@ -10,7 +10,7 @@ import java.util.List;
 
 public class DeletionTests extends TestBase{
 
-    @Test (enabled = false)
+    @Test
     public void testGroupDeletion() {
         app.getNavigationHelper().gotoGroupPage();
         app.getGroupHelper().checkGroup(new GroupData("test1", null, null));
