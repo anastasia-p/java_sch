@@ -11,7 +11,7 @@ public class NavigationHelper extends HelperBase{
         super (wd);
     }
 
-    public void gotoContactPage() {
+    public void contactPage() {
         if (isElementPresence(By.tagName("h1"))
                 && wd.findElement(By.tagName("h1")).getText().equals("Edit / add address book entry")) {
             return;
@@ -28,7 +28,7 @@ public class NavigationHelper extends HelperBase{
         click(By.linkText("groups"));
     }
 
-    public void gotoHomePage() {
+    public void homePage() {
         if (isElementPresence(By.id("maintable"))) {
             return;
         }

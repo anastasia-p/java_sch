@@ -5,45 +5,39 @@ import org.testng.annotations.Test;
 import ru.stqa.sch.addressbook.model.ContactData;
 import ru.stqa.sch.addressbook.model.GroupData;
 
-import java.util.Comparator;
-import java.util.List;
+import java.util.Set;
 
 public class CreationTests extends TestBase {
 
   @Test
   public void testGroupCreation() {
     app.goTo().groupPage();
-    List<GroupData> before = app.group().list();
+    Set<GroupData> before = app.group().all();
     GroupData group = new GroupData().withName("test1");
     app.group().create(group);
-    List<GroupData> after = app.group().list();
+    Set<GroupData> after = app.group().all();
     Assert.assertEquals(after.size(), before.size() + 1);
 
+    group.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt());
     before.add(group);
-    Comparator<? super GroupData> byId = (g1, g2) -> Integer.compare(g1.getId(), g2.getId());
-    before.sort(byId);
-    after.sort(byId);
     Assert.assertEquals(before, after);
   }
 
   @Test
   public void testContactCreation() {
-    app.group().checkGroup(new GroupData().withName("test1"));
-    app.goTo().gotoHomePage();
-    List<ContactData> before = app.getContactHelper().getContactList();
-    app.goTo().gotoContactPage();
+    app.goTo().homePage();
+    Set<ContactData> before = app.contact().all();
+    app.goTo().contactPage();
     ContactData contact = new ContactData()
             .withFirstname("firstName2").withLastname("lastName2").withAddress("address2")
-            .withMobile("123123").withEmail("test2@test.ru").withGroup("test1");
-    app.getContactHelper().createContact(contact, true);
-    app.goTo().gotoHomePage();
-    List<ContactData> after = app.getContactHelper().getContactList();
+            .withMobile("123123").withEmail("test2@test.ru");
+    app.contact().create(contact, true);
+    app.goTo().homePage();
+    Set<ContactData> after = app.contact().all();
     Assert.assertEquals(after.size(), before.size() + 1);
 
+    contact.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt());
     before.add(contact);
-    Comparator<? super ContactData> byId = (c1, c2) -> Integer.compare(c1.getId(), c2.getId());
-    before.sort(byId);
-    after.sort(byId);
     Assert.assertEquals(before, after);
   }
 
