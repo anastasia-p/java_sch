@@ -26,8 +26,8 @@ public class ModificationTests extends TestBase{
         GroupData group = new GroupData()
                 .withId(modifiedGroup.getId()).withName("test2").withHeader("header2").withFooter("footer2");
         app.group().modify(group);
+        assertThat(app.group().count(), equalTo(before.size()));
         Groups after = app.group().all();
-        assertThat(after.size(), equalTo(before.size()));
         assertThat(after, equalTo(before.without(modifiedGroup).withAdded(group)));
     }
 
@@ -43,8 +43,8 @@ public class ModificationTests extends TestBase{
                 .withId(modifiedContact.getId()).withFirstname("firstName2").withLastname("lastName2")
                 .withAddress("address2").withMobile("123123").withEmail("test2@test.ru");
         app.contact().modify(contact);
+        assertThat(app.contact().count(), equalTo(before.size()));
         Contacts after = app.contact().all();
-        assertThat(after.size(), equalTo(before.size()));
         assertThat(after, equalTo(before.without(modifiedContact).withAdded(contact)));
     }
 

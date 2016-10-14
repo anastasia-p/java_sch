@@ -1,16 +1,10 @@
 package ru.stqa.sch.addressbook.tests;
 
-import org.hamcrest.CoreMatchers;
-import org.hamcrest.MatcherAssert;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.sch.addressbook.model.ContactData;
 import ru.stqa.sch.addressbook.model.Contacts;
 import ru.stqa.sch.addressbook.model.GroupData;
 import ru.stqa.sch.addressbook.model.Groups;
-
-import java.util.Set;
-import java.util.regex.Matcher;
 
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.*;
@@ -23,8 +17,8 @@ public class CreationTests extends TestBase {
     Groups before = app.group().all();
     GroupData group = new GroupData().withName("test1");
     app.group().create(group);
+    assertThat(app.group().count(), equalTo(before.size() + 1));
     Groups after = app.group().all();
-    assertThat(after.size(), equalTo(before.size() + 1));
     assertThat(after, equalTo(
             before.withAdded(group.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
   }
@@ -39,8 +33,8 @@ public class CreationTests extends TestBase {
             .withMobile("123123").withEmail("test2@test.ru");
     app.contact().create(contact, true);
     app.goTo().homePage();
+    assertThat(app.contact().count(), equalTo(before.size() + 1));
     Contacts after = app.contact().all();
-    assertThat(after.size(), equalTo(before.size() + 1));
     assertThat(after, equalTo(
             before.withAdded(contact.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt()))));
   }

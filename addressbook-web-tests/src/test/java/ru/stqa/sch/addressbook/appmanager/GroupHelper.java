@@ -87,7 +87,7 @@ public class GroupHelper extends HelperBase {
         returnToGroupPage();
     }
 
-    public int getGroupCount() {
+    public int count() {
         return elementCount(By.name("selected[]"));
     }
 
