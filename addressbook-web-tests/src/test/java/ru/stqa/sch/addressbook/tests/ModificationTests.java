@@ -33,7 +33,6 @@ public class ModificationTests extends TestBase{
 
     @Test
     public void testContactModification() {
-        app.group().checkGroup(new GroupData().withName("test1"));
         app.contact().checkContact(new ContactData()
                 .withFirstname("firstName2").withLastname("lastName2").withAddress("address2")
                 .withMobile("123123").withEmail("test2@test.ru"), true);
