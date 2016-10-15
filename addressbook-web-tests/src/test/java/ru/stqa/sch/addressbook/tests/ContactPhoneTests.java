@@ -15,8 +15,7 @@ public class ContactPhoneTests extends TestBase {
   public void testContactPhones() {
     app.contact().checkContact(new ContactData()
             .withFirstname("firstName2").withLastname("lastName2").withAddress("address2")
-            .withHomePhone("111").withMobilePhone("222").withWorkPhone("333")
-            .withEmail("test2@test.ru"), true);
+            .withHomePhone("111").withMobilePhone("222").withWorkPhone("333"), true);
     app.goTo().homePage();
     ContactData contact = app.contact().all().iterator().next();
     ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
