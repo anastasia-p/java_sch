@@ -30,7 +30,7 @@ public class CreationTests extends TestBase {
     app.goTo().contactPage();
     ContactData contact = new ContactData()
             .withFirstname("firstName2").withLastname("lastName2").withAddress("address2")
-            .withMobile("123123").withEmail("test2@test.ru");
+            .withMobilePhone("123123").withEmail("test2@test.ru");
     app.contact().create(contact, true);
     app.goTo().homePage();
     assertThat(app.contact().count(), equalTo(before.size() + 1));
