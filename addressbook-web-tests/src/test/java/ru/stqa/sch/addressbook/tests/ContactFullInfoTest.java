@@ -32,7 +32,7 @@ public class ContactFullInfoTest extends TestBase {
             .collect(Collectors.joining());
   }
 
-  public static String cleaned(String phone) {
-    return phone.replaceAll("\\s", "").replace("M:", "").replace("H:", "").replace("W:", "").replaceAll("\\([^)]+\\)", "");
+  public static String cleaned(String data) {
+    return data.replaceAll("\\s", "").replace("M:", "").replace("H:", "").replace("W:", "").replaceAll("\\([^)]+\\)", "");
   }
 }

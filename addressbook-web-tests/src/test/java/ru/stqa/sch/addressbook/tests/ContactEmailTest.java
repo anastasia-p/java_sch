@@ -30,7 +30,7 @@ public class ContactEmailTest extends TestBase {
             .collect(Collectors.joining("\n"));
   }
 
-  public static String cleaned(String phone) {
-    return phone.replaceAll(" ", "");
+  public static String cleaned(String data) {
+    return data.replaceAll(" ", "");
   }
 }

@@ -20,7 +20,7 @@ public class ContactAddressTest extends TestBase {
     assertThat(cleaned(contact.getAddress()), equalTo(cleaned(contactInfoFromEditForm.getAddress())));
   }
 
-  public static String cleaned(String phone) {
-    return phone.replaceAll("\\s", "");
+  public static String cleaned(String data) {
+    return data.replaceAll("\\s", "");
   }
 }
