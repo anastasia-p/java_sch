@@ -114,7 +114,7 @@ public class ContactHelper extends HelperBase{
     }
 
     public ContactData infoFromEditForm(ContactData contact) {
-        initContactModificationById(contact.getId());
+        initContactModificationById(contact.getId(), 7);
         String firstname = wd.findElement(By.name("firstname")).getAttribute("value");
         String lastname = wd.findElement(By.name("lastname")).getAttribute("value");
         String home = wd.findElement(By.name("home")).getAttribute("value");
@@ -130,10 +130,16 @@ public class ContactHelper extends HelperBase{
                 .withEmail(email).withEmail2(email2).withEmail3(email3);
     }
 
-    private void initContactModificationById(int id) {
+    private void initContactModificationById(int id, int cellNumber) {
         WebElement checkbox = wd.findElement(By.cssSelector(String.format("input[value='%s']", id)));
         WebElement row = checkbox.findElement(By.xpath("./../.."));
         List<WebElement> cells = row.findElements(By.tagName("td"));
-        cells.get(7).findElement(By.tagName("a")).click();
+        cells.get(cellNumber).findElement(By.tagName("a")).click();
+    }
+
+    public String infoFromFullForm(ContactData contact) {
+        initContactModificationById(contact.getId(), 6);
+        String fullInfo = wd.findElement(By.id("content")).getText();
+        return fullInfo;
     }
 }
