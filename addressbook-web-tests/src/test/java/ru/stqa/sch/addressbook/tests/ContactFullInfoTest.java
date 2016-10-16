@@ -19,14 +19,18 @@ public class ContactFullInfoTest extends TestBase {
             .withEmail("test2@test.ru").withEmail2("test @   test").withEmail3("@"), true);
     app.goTo().homePage();
     ContactData contact = app.contact().all().iterator().next();
+    ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
     String contactInfoFromFullForm = app.contact().infoFromFullForm(contact);
 
-    assertThat(mergeData(contact), equalTo(cleaned(contactInfoFromFullForm)));
+    //assertThat(mergeData(contact), equalTo(cleaned(contactInfoFromFullForm)));
+    assertThat(mergeData(contactInfoFromEditForm), equalTo(cleaned(contactInfoFromFullForm)));
   }
 
   private String mergeData(ContactData contact) {
-    return Arrays.asList(contact.getFirstname(), contact.getLastname(),
-            contact.getAddress(), contact.getAllPhones(), contact.getAllEmails())
+    return Arrays.asList(contact.getFirstname(), contact.getLastname(), contact.getAddress(),
+            //contact.getAllPhones(), contact.getAllEmails())
+            contact.getHomePhone(), contact.getMobilePhone(), contact.getWorkPhone(),
+            contact.getEmail(), contact.getEmail2(), contact.getEmail3())
             .stream().filter((s) -> ! s.equals(""))
             .map(ContactFullInfoTest::cleaned)
             .collect(Collectors.joining());
