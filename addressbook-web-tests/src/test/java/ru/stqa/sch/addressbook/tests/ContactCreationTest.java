@@ -19,23 +19,7 @@ import java.util.stream.Collectors;
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.*;
 
-public class CreationTests extends TestBase {
-
-  @DataProvider
-  public Iterator<Object[]> validGroups() throws IOException {
-    try (BufferedReader reader = new BufferedReader(new FileReader("src/test/resources/groups.xml"))) {
-      String xml = "";
-      String line = reader.readLine();
-      while (line != null) {
-        xml += line;
-        line = reader.readLine();
-      }
-      XStream xstream = new XStream();
-      xstream.processAnnotations(GroupData.class);
-      List<GroupData> groups = (List<GroupData>) xstream.fromXML(xml);
-      return groups.stream().map((g) -> new Object[]{g}).collect(Collectors.toList()).iterator();
-    }
-  }
+public class ContactCreationTest extends TestBase {
 
   @DataProvider
   public Iterator<Object[]> validContactsJson() throws IOException {
@@ -52,7 +36,7 @@ public class CreationTests extends TestBase {
       return contacts.stream().map((g) -> new Object[]{g}).collect(Collectors.toList()).iterator();
     }
   }
-  
+
   @DataProvider
   public Iterator<Object[]> validContactsCsv() throws IOException {
     List<Object[]> list = new ArrayList<Object[]>();
@@ -65,17 +49,6 @@ public class CreationTests extends TestBase {
       line = reader.readLine();
     }
     return list.iterator();
-  }
-
-  @Test (dataProvider = "validGroups")
-  public void testGroupCreation(GroupData group) {
-    app.goTo().groupPage();
-    Groups before = app.group().all();
-    app.group().create(group);
-    assertThat(app.group().count(), equalTo(before.size() + 1));
-    Groups after = app.group().all();
-    assertThat(after, equalTo(
-            before.withAdded(group.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
   }
 
   @Test (dataProvider = "validContactsJson")
@@ -91,5 +64,4 @@ public class CreationTests extends TestBase {
     assertThat(after, equalTo(
             before.withAdded(contact.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt()))));
   }
-
 }

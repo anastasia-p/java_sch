@@ -9,20 +9,7 @@ import ru.stqa.sch.addressbook.model.Groups;
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.*;
 
-public class ModificationTests extends TestBase{
-
-    @Test
-    public void testGroupModification() {
-        app.group().checkGroup(new GroupData().withName("test1"));
-        Groups before = app.group().all();
-        GroupData modifiedGroup = before.iterator().next();
-        GroupData group = new GroupData()
-                .withId(modifiedGroup.getId()).withName("test2").withHeader("header2").withFooter("footer2");
-        app.group().modify(group);
-        assertThat(app.group().count(), equalTo(before.size()));
-        Groups after = app.group().all();
-        assertThat(after, equalTo(before.without(modifiedGroup).withAdded(group)));
-    }
+public class ContactModificationTest extends TestBase{
 
     @Test
     public void testContactModification() {

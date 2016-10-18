@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.*;
 
-public class ContactPhoneTests extends TestBase {
+public class ContactPhoneTest extends TestBase {
 
   @Test
   public void testContactPhones() {
@@ -26,7 +26,7 @@ public class ContactPhoneTests extends TestBase {
   private String mergePhones(ContactData contact) {
     return Arrays.asList(contact.getHomePhone(), contact.getMobilePhone(), contact.getWorkPhone())
             .stream().filter((s) -> ! s.equals(""))
-            .map(ContactPhoneTests::cleaned)
+            .map(ContactPhoneTest::cleaned)
             .collect(Collectors.joining("\n"));
   }
 
