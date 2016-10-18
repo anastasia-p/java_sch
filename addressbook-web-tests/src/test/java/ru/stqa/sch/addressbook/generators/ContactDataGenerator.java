@@ -24,7 +24,7 @@ public class ContactDataGenerator {
         Writer writer = new FileWriter(file);
 
         for (ContactData contact : contacts) {
-            writer.write(String.format("%s;%s;%s;%s;%s;\n", contact.getFirstname(), contact.getLastname(),
+            writer.write(String.format("%s;%s;%s;%s;%s\n", contact.getFirstname(), contact.getLastname(),
                     contact.getAddress(), contact.getMobilePhone(), contact.getEmail()));
         }
         writer.close();
@@ -35,7 +35,7 @@ public class ContactDataGenerator {
         for (int i = 0; i < count; i++) {
             contacts.add(new ContactData().withFirstname(String.format("firstName %s", i))
                     .withLastname(String.format("lastName %s", i)).withAddress(String.format("address %s", i))
-                    .withMobilePhone(String.format("%s", i)).withEmail(String.format("email%s@test.com", i)));
+                    .withMobilePhone(String.format("%s%s%s", i, i, i)).withEmail(String.format("email%s@test.com", i)));
         }
         return contacts;
     }
