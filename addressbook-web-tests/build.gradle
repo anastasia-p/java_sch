@@ -9,4 +9,5 @@ dependencies {
     compile 'com.applitools:eyes-selenium-java-jersey1_17-sf2_51_0:2.51'
     compile 'org.hamcrest:java-hamcrest:2.0.0.0'
     compile 'com.beust:jcommander:1.58'
+    compile 'com.thoughtworks.xstream:xstream:1.4.9'
 }
