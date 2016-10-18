@@ -6,12 +6,14 @@ import ru.stqa.sch.addressbook.model.Contacts;
 import ru.stqa.sch.addressbook.model.GroupData;
 import ru.stqa.sch.addressbook.model.Groups;
 
+import java.io.File;
+
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.*;
 
 public class CreationTests extends TestBase {
 
-  @Test
+  @Test (enabled = false)
   public void testGroupCreation() {
     app.goTo().groupPage();
     Groups before = app.group().all();
@@ -28,9 +30,10 @@ public class CreationTests extends TestBase {
     app.goTo().homePage();
     Contacts before = app.contact().all();
     app.goTo().contactPage();
+    File photo = new File("src/test/resources/pic.png");
     ContactData contact = new ContactData()
             .withFirstname("firstName2").withLastname("lastName2").withAddress("address2")
-            .withMobilePhone("123123").withEmail("test2@test.ru");
+            .withMobilePhone("123123").withEmail("test2@test.ru").withPhoto(photo);
     app.contact().create(contact, true);
     app.goTo().homePage();
     assertThat(app.contact().count(), equalTo(before.size() + 1));
