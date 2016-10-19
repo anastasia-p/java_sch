@@ -61,7 +61,7 @@ public class ContactHelper extends HelperBase{
     public void modify(ContactData contact) {
         navigationHelper = new NavigationHelper(wd);
         selectContactById(contact.getId());
-        initContactModification();
+        initContactModificationById(contact.getId(), 7);
         fillContactForm(contact, false);
         submitContactModification();
         contactCache = null;
