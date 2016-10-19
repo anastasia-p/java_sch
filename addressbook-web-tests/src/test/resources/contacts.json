@@ -19,19 +19,5 @@
     "address": "address 2",
     "mobile": "222",
     "email": "email2@test.com"
-  },
-  {
-    "firstname": "firstName 3",
-    "lastname": "lastName 3",
-    "address": "address 3",
-    "mobile": "333",
-    "email": "email3@test.com"
-  },
-  {
-    "firstname": "firstName 4",
-    "lastname": "lastName 4",
-    "address": "address 4",
-    "mobile": "444",
-    "email": "email4@test.com"
   }
 ]
