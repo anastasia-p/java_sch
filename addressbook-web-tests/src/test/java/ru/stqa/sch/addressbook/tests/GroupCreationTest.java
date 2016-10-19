@@ -1,9 +1,10 @@
 package ru.stqa.sch.addressbook.tests;
 
 import com.thoughtworks.xstream.XStream;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import org.testng.log4testng.Logger;
 import ru.stqa.sch.addressbook.model.GroupData;
 import ru.stqa.sch.addressbook.model.Groups;
 
