@@ -1,23 +1,35 @@
 [
   {
-    "firstname": "firstName 0",
-    "lastname": "lastName 0",
-    "address": "address 0",
-    "mobile": "000",
-    "email": "email0@test.com"
-  },
-  {
     "firstname": "firstName 1",
     "lastname": "lastName 1",
     "address": "address 1",
-    "mobile": "111",
-    "email": "email1@test.com"
+    "home": "h111",
+    "mobile": "m111",
+    "work": "w111",
+    "email": "1email1@test.com",
+    "email2": "2email1@test.com",
+    "email3": "3email1@test.com"
   },
   {
     "firstname": "firstName 2",
     "lastname": "lastName 2",
     "address": "address 2",
-    "mobile": "222",
-    "email": "email2@test.com"
+    "home": "h222",
+    "mobile": "m222",
+    "work": "w222",
+    "email": "1email2@test.com",
+    "email2": "2email2@test.com",
+    "email3": "3email2@test.com"
+  },
+  {
+    "firstname": "firstName 3",
+    "lastname": "lastName 3",
+    "address": "address 3",
+    "home": "h333",
+    "mobile": "m333",
+    "work": "w333",
+    "email": "1email3@test.com",
+    "email2": "2email3@test.com",
+    "email3": "3email3@test.com"
   }
 ]

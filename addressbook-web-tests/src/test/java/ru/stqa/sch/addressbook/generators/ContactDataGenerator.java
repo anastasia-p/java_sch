@@ -80,10 +80,12 @@ public class ContactDataGenerator {
 
     private List<ContactData> generateContacts(int count)  {
         List<ContactData> contacts = new ArrayList<ContactData>();
-        for (int i = 0; i < count; i++) {
+        for (int i = 1; i <= count; i++) {
             contacts.add(new ContactData().withFirstname(String.format("firstName %s", i))
                     .withLastname(String.format("lastName %s", i)).withAddress(String.format("address %s", i))
-                    .withMobilePhone(String.format("%s%s%s", i, i, i)).withEmail(String.format("email%s@test.com", i)));
+                    .withHomePhone(String.format("h%s%s%s", i, i, i)).withMobilePhone(String.format("m%s%s%s", i, i, i))
+                    .withWorkPhone(String.format("w%s%s%s", i, i, i)).withEmail(String.format("1email%s@test.com", i))
+                    .withEmail2(String.format("2email%s@test.com", i)).withEmail3(String.format("3email%s@test.com", i)));
         }
         return contacts;
     }
