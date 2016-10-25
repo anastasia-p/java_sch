@@ -42,6 +42,10 @@ public class ContactHelper extends HelperBase{
         click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
     }
 
+    public void addSelectedContact() {
+        click(By.name("add"));
+    }
+
     public void initContactModification() {
         click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
     }
@@ -72,6 +76,14 @@ public class ContactHelper extends HelperBase{
         selectContactById(deletedContact.getId());
         deleteSelectedContact();
         alert();
+        contactCache = null;
+        navigationHelper.homePage();
+    }
+
+    public void addToGroup(ContactData addedContact) {
+        navigationHelper = new NavigationHelper(wd);
+        selectContactById(addedContact.getId());
+        addSelectedContact();
         contactCache = null;
         navigationHelper.homePage();
     }
@@ -143,4 +155,6 @@ public class ContactHelper extends HelperBase{
         String fullInfo = wd.findElement(By.id("content")).getText();
         return fullInfo;
     }
+
+
 }
