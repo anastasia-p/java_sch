@@ -13,6 +13,7 @@
     <orderEntry type="library" name="Gradle: org.testng:testng:6.9.10" level="project" />
     <orderEntry type="library" name="Gradle: com.applitools:eyes-selenium-java-jersey1_17-sf2_51_0:2.51" level="project" />
     <orderEntry type="library" name="Gradle: org.hamcrest:java-hamcrest:2.0.0.0" level="project" />
+    <orderEntry type="library" name="Gradle: commons-net:commons-net:3.5" level="project" />
     <orderEntry type="library" name="Gradle: com.beust:jcommander:1.48" level="project" />
     <orderEntry type="library" name="Gradle: org.beanshell:bsh:2.0b4" level="project" />
     <orderEntry type="library" name="Gradle: com.applitools:eyes-sdk-java-jersey1_17-sf2_51_0:2.51" level="project" />
@@ -74,7 +75,6 @@
     <orderEntry type="library" name="Gradle: io.netty:netty:3.5.7.Final" level="project" />
     <orderEntry type="library" name="Gradle: org.seleniumhq.selenium:selenium-support:2.53.1" level="project" />
     <orderEntry type="library" name="Gradle: org.seleniumhq.selenium:selenium-leg-rc:2.53.1" level="project" />
-    <orderEntry type="module" module-name="addressbook-web-tests" scope="TEST" />
   </component>
   <component name="TestModuleProperties" production-module="mantis-tests_main" />
 </module>
