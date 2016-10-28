@@ -14,10 +14,15 @@
     <orderEntry type="library" name="Gradle: com.applitools:eyes-selenium-java-jersey1_17-sf2_51_0:2.51" level="project" />
     <orderEntry type="library" name="Gradle: org.hamcrest:java-hamcrest:2.0.0.0" level="project" />
     <orderEntry type="library" name="Gradle: commons-net:commons-net:3.5" level="project" />
+    <orderEntry type="library" name="Gradle: org.subethamail:subethasmtp:3.1.7" level="project" />
     <orderEntry type="library" name="Gradle: com.beust:jcommander:1.48" level="project" />
     <orderEntry type="library" name="Gradle: org.beanshell:bsh:2.0b4" level="project" />
     <orderEntry type="library" name="Gradle: com.applitools:eyes-sdk-java-jersey1_17-sf2_51_0:2.51" level="project" />
     <orderEntry type="library" name="Gradle: io.appium:java-client:4.1.2" level="project" />
+    <orderEntry type="library" name="Gradle: javax.mail:mail:1.4.4" level="project" />
+    <orderEntry type="library" name="Gradle: javax.activation:activation:1.1.1" level="project" />
+    <orderEntry type="library" name="Gradle: org.slf4j:slf4j-api:1.6.1" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.code.findbugs:jsr305:1.3.9" level="project" />
     <orderEntry type="library" name="Gradle: com.applitools:eyes-common-java-jersey1_17-sf2_51_0:2.51" level="project" />
     <orderEntry type="library" name="Gradle: com.applitools:eyes-connectivity-java-jersey1_17-sf2_51_0:2.51" level="project" />
     <orderEntry type="library" name="Gradle: com.google.code.gson:gson:2.7" level="project" />
